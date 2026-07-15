@@ -30,6 +30,7 @@ const ResultGrid = () => {
               title: item.alt_description,
               thumbnail: item.urls.small,
               src: item.urls.full,
+              url: item.links.html
             }));
           }
           if (activeTab == "videos") {
@@ -40,6 +41,7 @@ const ResultGrid = () => {
               title: item.user.name || "video",
               thumbnail: item.image,
               src: item.video_files[0].link,
+              url:item.url
             }));
           }
           dispatch(setResults(data));
@@ -49,7 +51,7 @@ const ResultGrid = () => {
       };
       getData();
     },
-    [query, activeTab],
+    [query, activeTab,dispatch],
   );
 
   if (error) return <h1>Error</h1>;
